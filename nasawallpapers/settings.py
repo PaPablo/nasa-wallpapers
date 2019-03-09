@@ -50,11 +50,17 @@ ROBOTSTXT_OBEY = True
 #    'nasawallpapers.middlewares.NasawallpapersSpiderMiddleware': 543,
 #}
 
-# Enable or disable downloader middlewares
-# See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
-#DOWNLOADER_MIDDLEWARES = {
-#    'nasawallpapers.middlewares.NasawallpapersDownloaderMiddleware': 543,
-#}
+DOWNLOADER_MIDDLEWARES = {
+    'scrapy_splash.SplashCookiesMiddleware': 723,
+    'scrapy_splash.SplashMiddleware': 725,
+    'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware': 810,
+}
+
+# Url a donde se encuentra el splash
+SPLASH_URL = 'http://localhost:8050'
+
+DUPEFILTER_CLASS = 'scrapy_splash.SplashAwareDupeFilter'
+HTTPCACHE_STORAGE = 'scrapy_splash.SplashAwareFSCacheStorage'
 
 # Enable or disable extensions
 # See https://doc.scrapy.org/en/latest/topics/extensions.html
@@ -67,6 +73,9 @@ ROBOTSTXT_OBEY = True
 #ITEM_PIPELINES = {
 #    'nasawallpapers.pipelines.NasawallpapersPipeline': 300,
 #}
+
+ITEM_PIPELINES = {'scrapy.pipelines.images.ImagesPipeline': 1}
+IMAGES_STORE = '/tmp/images/'
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://doc.scrapy.org/en/latest/topics/autothrottle.html
