@@ -1,7 +1,7 @@
 import scrapy
 from scrapy_splash import SplashRequest
 
-from items import NasaImage
+from nasawallpapers.items import NasaImage
 
 
 class NasaSplashSpider(scrapy.Spider):
