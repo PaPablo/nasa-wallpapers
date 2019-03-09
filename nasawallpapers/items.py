@@ -7,8 +7,7 @@
 
 import scrapy
 
+class NasaImage(scrapy.Item):
+    image_urls = scrapy.Field()
+    images = scrapy.Field()
 
-class NasawallpapersItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
